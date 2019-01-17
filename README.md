@@ -1,23 +1,21 @@
-![封面图](封面图.jpg)
-
-
-
+![cover](https://github.com/mixsystem/bosmixsystem/blob/master/images/cover.jpg)
 # MixSys：An Anonymous Agency Transfer System
 
 *摘要：Mixsys以信息加密和混淆传输技术为基础，将透明的区块链代币传输变得难以追踪，以解决目前区块链所面临的隐私暴露问题。*
 
 ### 背景
 
-随着区块链技术的商业发展，很多分布式应用对公链提出了更高的性能要求。以EOS为代表的公链系统在解决TPS问题的同时，隐私保护却被削弱了，公链面临的矛盾是：公链的高性能是以降低“去中心化”为代价来实现的，越是高性能的公链，越是偏向中心化。例如，目前BTC的全节点达到了2万个左右，ETH的节点在2000左右，EOS的节点在21个。这显示出，TPS越高的公链，中心化程度越高。
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blockchain &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nodes&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中心化程度&nbsp;&nbsp;&nbsp;&nbsp; |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTC &nbsp;&nbsp;         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30000+&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;极低                           |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ETH                      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000+ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;低                             |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOS                      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高                             |
+随着区块链技术的商业发展，很多分布式应用对公链提出了更高的性能要求。以EOS为代表的公链系统在解决TPS问题的同时，隐私保护却被削弱了，公链面临的矛盾是：公链的高性能是以降低“去中心化”为代价来实现的，越是高性能的公链，越是偏向中心化。例如，目前BTC的全节点达到了2万个左右，ETH的节点在2000左右，EOS的节点在21个。这显示出，TPS越高的公链，中心化程度越高。 
+
+|  Blockchain  | Nodes  | 中心化程度 |
+| --- | --- | --- |
+| BTC  | 30000+ | 极低  |
+| ETH  | 2000+ | 低     |
+| EOS  | 21 | 高   |
 
 **中心化和高性能的关系如下图所示**：
 
-![center](C:\Users\ericl\OneDrive\混沌系统\mixsys web\images\center.png)
+![center](https://github.com/mixsystem/bosmixsystem/blob/master/images/center.png)
 
 公链偏向中心化，随之而来的问题就是，资产的安全和个人隐私受到威胁。MixSys采用信息加密和混淆传输技术，致力于解决公链传输中的隐私问题。
 
@@ -54,7 +52,7 @@ $$
 
 a/b/c/d...取值范围0-99,当取值为0，表示不参与这次混淆，实现了一笔转账交易在混淆队列内部不是均匀分布，在时间上不可预测，极大的增强了混淆度。
 
-- 混淆前：
+- 混淆前： 
 ```mermaid
 graph TB
 subgraph EOS提供的透明传输交易
@@ -66,7 +64,7 @@ subgraph EOS提供的透明传输交易
 end
 ```
 
-- 混淆后：
+- 混淆后： 
 ```mermaid
 graph TB
 subgraph MixSys混淆转账交易
@@ -143,7 +141,8 @@ end
 - **收银员账户**，这是一个权限被主合约控制的EOS账号，它本身没有合约部署，不会被攻击。仅仅负责收款。前端Web+Scatter提交转账请求后，EOS币被转入收银员账号，转账目标账号被加密写入转账MEMO。
 - **解密与发送交易主控合约**部署在EOS主网上，静默工作模式，他不接受除“传达员账号”外的其他任何账号发送的信息。没有对外接口提供，不会被调用和激活。他仅仅解密传达员账号发送过来的目标密文信息。
 - **传达员账户**，这个账户运行在php后端，没有合约部署，也没有资金，仅仅用来发送密文给主合约。传达员账户将会24小时为周期更换公钥，防止被破解。
-- **混淆员账户**，由主合约控制的混淆账户，由于数量众多，所以它们当中的每个账户仅仅偶尔随机参与混淆。
+- **混淆员账户**，由主合约控制的混淆账户，由于数量众多，所以它们当中的每个账户仅仅偶尔随机参与混淆。  
+
 ```mermaid
 graph TB
     subgraph 加密
@@ -192,13 +191,7 @@ graph TB
 
 
 ### 转账耗时与费用
-
-| &nbsp;&nbsp;&nbsp;&nbsp;数&nbsp;量&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;费&nbsp;用&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; 混&nbsp;淆&nbsp;度&nbsp;&nbsp; | &nbsp;&nbsp;转&nbsp;账&nbsp;周&nbsp;期&nbsp;&nbsp; |
-| ---------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------- | -------------------------------------------------- |
-| 5.00 EOS                                                   | Free                                                         | 85%                                         | Built-in MixSystem                                 |
-| 50.0 EOS                                                   | 0.5%                                                         | 950%                                        | Maximum 5 min                                      |
-| 200 EOS                                                    | 1.0%                                                         | 98%                                         | Maximum 15 min                                     |
-| 1000 EOS                                                   | 3.0%                                                         | 99%                                         | Maximum 1 hours                                    |
+|
 ###### 表2：转账周期是Action最长时间，通常会小于这个数值。
 
 ### 结论
@@ -210,10 +203,6 @@ graph TB
 3. [EOSIO - The Most Powerful Infrastructure for Decentralized Applications](https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md)
 4. [EOSIO developers C++ API reference document](https://developers.eos.io/eosio-cpp/v1.3.1/docs/c-cpp-api)
 5. [Bancor Protocol Contracts](https://github.com/bancorprotocol/contracts)
-
-### 免责声明 
-
-Mixsys does not guarantee the accuracy of or the conclusions reached in this white paper, and this white paper is provided “as is”. MixSys does not make and expressly disclaims all representations and warranties, express, implied, statutory or otherwise, whatsoever, including, but not limited to: (i) warranties of merchantability, fitness for a particular purpose, suitability, usage, title or noninfringement; (ii) that the contents of this white paper are free from error; and (iii) that such contents will not infringe third-party rights. MixSys and its affiliates shall have no liability for damages of any kind arising out of the use, reference to, or reliance on this white paper or any of the content contained herein, even if advised of the possibility of such damages. In no event will MixSys or its affiliates be liable to any person or entity for any damages, losses, liabilities, costs or expenses of any kind, whether direct or indirect, consequential, compensatory, incidental, actual, exemplary, punitive or special for the use of, reference to, or reliance on this white paper or any of the content contained herein, including, without limitation, any loss of business, revenues, profits, data, use, goodwill or other intangible losses.
 
 ---
 
