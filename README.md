@@ -180,15 +180,17 @@ graph TB
     收银员账户--RSA解密MEMO--> 后端PHP
     end
 ```
-### 在EOS上使用MixSys
+### 在BOS上使用MixSys
 
-使用Chrome打开 https://eos.mixsystem.network/ 登录scatter，选择目标账户，输入数量，写入备注，点击转账发送交易。
+使用Chrome打开 https://bos.mixsystem.network/ 登录scatter，选择目标账户，输入数量，写入备注，点击转账发送交易。
 
 请注意：
 - 不支持通过Mixsys玩游戏。
 - 因没有Token回传机制，所以不支持参与其他项目的ICO。
 - 支持转账给交易所，但不支持转账给大部分的智能合约。
 
+### Mix Token空投规则
+每个BOS账号24小时可以免费领取一次，一次1000个MIX，我们将在近期降低领取的数量，随着时间的推移，空投会慢慢减少，达到发行总量的20%将会停止Claim。
 
 ### 转账耗时与费用
 |
