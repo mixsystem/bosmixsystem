@@ -1,4 +1,4 @@
-![cover](https://github.com/mixsystem/bosmixsystem/blob/master/images/cover.jpg)
+
 # MixSys：An Anonymous Agency Transfer System
 
 *摘要：Mixsys以信息加密和混淆传输技术为基础，将透明的区块链代币传输变得难以追踪，以解决目前区块链所面临的隐私暴露问题。*
@@ -52,36 +52,13 @@ $$
 
 a/b/c/d...取值范围0-99,当取值为0，表示不参与这次混淆，实现了一笔转账交易在混淆队列内部不是均匀分布，在时间上不可预测，极大的增强了混淆度。
 
+- 混淆前传输模式：
 
-```mermaid
-graph TB;
-subgraph EOS提供的透明传输交易;
-1--明文传输-->A;
-2--明文传输-->B;
-3--明文传输-->C;
-4--明文传输-->D;
-5--明文传输-->F;
-end
-```
+![cover](https://github.com/mixsystem/bosmixsystem/blob/master/images/mixfront.png)
 
 - 混淆后： 
+![cover](https://github.com/mixsystem/bosmixsystem/blob/master/images/mixafter.png)
 
-graph TB;
-subgraph MixSys混淆转账交易;
-1--转账-->主合约;
-2--转账-->主合约;
-3--转账-->主合约;
-4--转账-->主合约;
-5--转账-->主合约;
-end
-subgraph 
-主合约--转账轮次K1-->E;
-主合约--转账轮次K3-->B;
-主合约--转账轮次K1-->D;
-主合约--转账轮次K2-->C;
-主合约--转账轮次K2-->A;
-end
-```
 由MixSys主合约批量发送转账队列K1..K2..K3...Kn，转账的发起地址和目标地址已被混淆，时间对应已被混淆，同时达成了目标混淆和时间混淆。
 
 ### 混淆度(blend)
@@ -143,43 +120,7 @@ end
 - **传达员账户**，这个账户运行在php后端，没有合约部署，也没有资金，仅仅用来发送密文给主合约。传达员账户将会24小时为周期更换公钥，防止被破解。
 - **混淆员账户**，由主合约控制的混淆账户，由于数量众多，所以它们当中的每个账户仅仅偶尔随机参与混淆。  
 
-```mermaid
-graph TB
-    subgraph 加密
-    目标账户明文--RSA加密-->MEMO
-    MEMO--EOS transfer-->收银员账户
-    end
-    subgraph 传送
-   传达员账户--MEMO已混淆--> 主传送合约
-    end
-    subgraph 
-    收银员账户--权限控制-->主传送合约
-    end
-    subgraph 接收
-    主传送合约--> 混淆池账户A
-    end
-    subgraph 接收
-    主传送合约--> 混淆池账户B
-    end
-      subgraph 接收
-    主传送合约--> 混淆池账户C
-    end
-    subgraph 
-    混淆池账户A--> 目标账户
-    end
-     subgraph 
-    混淆池账户B--> 目标账户
-    end
-     subgraph 
-    混淆池账户C--> 目标账户
-    end
-    subgraph 解密
-    后端PHP--RSA解密并混淆MEMO--> 传达员账户
-    end
-    subgraph 
-    收银员账户--RSA解密MEMO--> 后端PHP
-    end
-```
+![cover](https://github.com/mixsystem/bosmixsystem/blob/master/images/mixmermaid.png)
 
 ### 在BOS上使用MixSys
 
