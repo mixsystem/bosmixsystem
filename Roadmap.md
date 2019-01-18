@@ -39,7 +39,7 @@
 - 持有Mix Token将会获得这些收益的80%分红
 - 本项目没有私募，团队收益仅仅来自于项目获得的手续费的20%
 
-#### Mix Token的分配
+### Mix Token的分配
 - 通过Claim可以获得Mix Token，但总量不超过5亿
 - 合作伙伴和市场推广预留10亿Mix Token
 - 预留35亿Mix Token，给予使用MixSystem参与混淆传输赠送的账户
