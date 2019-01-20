@@ -3,7 +3,7 @@
 #### 第一阶段：启动基于BOS的MixSystem
 - [x] 部署基于BOS的Mix Token合约
 - [x] Claim Mix功能与上线交易所
-- [ ] MixSystem算法适配BOS 
+- [x] MixSystem算法适配BOS 
 - [ ] Bos.mixsystem.network网站部署上线 
 - [ ] BOS主网合约部署上线
 - [ ] 分红机制设计
